@@ -37,6 +37,22 @@ public class Principal {
 		 * aluno e adicione 2 objetos na lista. Percorra a 
 		 * lista e imprima o código, nome e sobrenome no console.
 		 */
+		List<Aluno> alunos = new ArrayList<>();
+		
+		Aluno pessoa1 = new Aluno();
+		pessoa1.setCodigo(10);
+		pessoa1.setNome("JOAO");
+		pessoa1.setSobrenome("DA SILVA");
+		
+		// Utilizn
+		Aluno pessoa2 = new Aluno(20,"MARIA","DOS SANTOS"); 
+		
+		alunos.add(pessoa1);
+		alunos.add(pessoa2);
+		
+		for (Aluno a : alunos) {
+			System.out.println(a.getCodigo()+" - "+a.getNome()+" "+a.getSobrenome());
+		}
 		
 	}
 	
