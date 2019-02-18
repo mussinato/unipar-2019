@@ -3,7 +3,7 @@
 ## Programação do 1 bimestre
 11/02 - Inicio das aulas - revisão listas
 
-18/02 - Revisão de POO
+18/02 - Revisão de POO - Encapsulamento, herança e polimorfismo
 
 25/02 - Java Swing - criação de telas
 
