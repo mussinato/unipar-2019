@@ -8,11 +8,14 @@ public class Aluno {
 		
 	}
 	
+	// Sobrescrevendo o método construtor
 	public Aluno(Integer codigo, String nome, String sobrenome) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 	}
+	
+	// Encapsulamento dos atributos (get/set)
 	
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;

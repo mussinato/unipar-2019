@@ -44,12 +44,13 @@ public class Principal {
 		pessoa1.setNome("JOAO");
 		pessoa1.setSobrenome("DA SILVA");
 		
-		// Utilizn
+		// Utilizando método construtor para passar os valores
 		Aluno pessoa2 = new Aluno(20,"MARIA","DOS SANTOS"); 
 		
 		alunos.add(pessoa1);
 		alunos.add(pessoa2);
 		
+		// Imprimindo a lista de alunos
 		for (Aluno a : alunos) {
 			System.out.println(a.getCodigo()+" - "+a.getNome()+" "+a.getSobrenome());
 		}
