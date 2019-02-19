@@ -1,8 +1,8 @@
 
-public class Aluno {
+public class Aluno extends Pessoa {
 	private Integer codigo;
-	private String nome;
 	private String sobrenome;
+	private Double mensalidade;
 	
 	public Aluno() {
 		
@@ -11,8 +11,13 @@ public class Aluno {
 	// Sobrescrevendo o método construtor
 	public Aluno(Integer codigo, String nome, String sobrenome) {
 		this.codigo = codigo;
-		this.nome = nome;
+		this.setNome(nome);
 		this.sobrenome = sobrenome;
+	}
+	
+	// Sobrescrevendo o método imprimir 
+	public void imprimir() {
+		System.out.println(getNome()+" - "+mensalidade);
 	}
 	
 	// Encapsulamento dos atributos (get/set)
@@ -25,14 +30,6 @@ public class Aluno {
 		return codigo;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getSobrenome() {
 		return sobrenome;
 	}
@@ -40,7 +37,13 @@ public class Aluno {
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-	
-	
+
+	public Double getMensalidade() {
+		return mensalidade;
+	}
+
+	public void setMensalidade(Double mensalidade) {
+		this.mensalidade = mensalidade;
+	}
 	
 }

@@ -55,6 +55,34 @@ public class Principal {
 			System.out.println(a.getCodigo()+" - "+a.getNome()+" "+a.getSobrenome());
 		}
 		
+		/*
+		 * 4. Criar a classe Pessoa com o atributo nome.
+		 * Criar a classe Professor que é uma pessoa.
+		 * Alterar a classe Aluno para que seja uma pessoa.
+		 * O professor tem salário e o aluno tem mensalidade.
+		 * As classes deverão ter um método imprimir, que 
+		 * exibirá o nome no console.
+		 * Crie 1 objeto professor e outro aluno, passando
+		 * todos os dados.
+		 */
+		
+		Aluno a1 = new Aluno();
+		a1.setNome("JOSE");
+		a1.setMensalidade(715.0);
+		
+		Professor p1 = new Professor();
+		p1.setNome("MARIA");
+		p1.setSalario(9825.5);
+		
+		// Polimorfismo
+		List<Pessoa> pessoas = new ArrayList<>();
+		pessoas.add(a1);
+		pessoas.add(p1);
+		
+		for (Pessoa pes : pessoas) {
+			pes.imprimir();
+		}
+		
 	}
 	
 	public static void imprimir(List<Integer> valores) {
