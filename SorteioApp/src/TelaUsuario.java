@@ -1,64 +1,154 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaUsuario extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JPasswordField passwordField;
-
+	private JTextField txtCodigo;
+	private JTextField txtUsuario;
+	private JPasswordField txtSenha;
+	private JTable tabela;
+	private DefaultTableModel modelo = new DefaultTableModel();
+	private JButton btnSalvar;
+	private JButton btnCancelar;
+	private JButton btnNovo;
 	
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaUsuario() {
+		setResizable(false);
+		setTitle("Cadastro de Usu\u00E1rio");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 461);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(82, 77, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtCodigo = new JTextField();
+		txtCodigo.setEnabled(false);
+		txtCodigo.setBounds(66, 31, 64, 20);
+		contentPane.add(txtCodigo);
+		txtCodigo.setColumns(10);
 		
-		JLabel lblCodigo = new JLabel("Codigo");
-		lblCodigo.setBounds(39, 80, 46, 14);
+		JLabel lblCodigo = new JLabel("Codigo *");
+		lblCodigo.setBounds(10, 34, 46, 14);
 		contentPane.add(lblCodigo);
 		
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setBounds(39, 121, 46, 14);
+		JLabel lblNewLabel = new JLabel("Usuario *");
+		lblNewLabel.setBounds(10, 59, 46, 14);
 		contentPane.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(82, 118, 130, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setEnabled(false);
+		txtUsuario.setBounds(66, 56, 153, 20);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(39, 160, 46, 14);
+		lblSenha.setBounds(10, 84, 46, 14);
 		contentPane.add(lblSenha);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(82, 157, 130, 20);
-		contentPane.add(passwordField);
+		txtSenha = new JPasswordField();
+		txtSenha.setEnabled(false);
+		txtSenha.setBounds(66, 81, 153, 20);
+		contentPane.add(txtSenha);
 		
-		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario.setBounds(39, 28, 86, 27);
-		contentPane.add(lblUsuario);
+		btnNovo = new JButton("Novo");
+		btnNovo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNovo.setEnabled(false);
+				btnSalvar.setEnabled(true);
+				btnCancelar.setEnabled(true);
+				
+				txtCodigo.setEnabled(true);
+				txtUsuario.setEnabled(true);
+				txtSenha.setEnabled(true);
+			}
+		});
+		btnNovo.setBounds(0, 0, 89, 23);
+		contentPane.add(btnNovo);
+		
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.setEnabled(false);
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String codigo = txtCodigo.getText();
+					String usuario = txtUsuario.getText();
+					String senha = new String(txtSenha.getPassword());
+					
+					if (codigo == null || codigo.equals("")) {
+						throw new Exception("O código é obrigatório.");
+					}
+					if (usuario == null || usuario.equals("")) {
+						throw new Exception("O usuário é obrigatório.");
+					}
+					
+					modelo.addRow(new Object[] {codigo,usuario});
+					
+					JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso.");
+					
+					btnNovo.setEnabled(true);
+					btnSalvar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+					
+					txtCodigo.setText(null);
+					txtUsuario.setText(null);
+					txtSenha.setText(null);
+					
+					txtCodigo.setEnabled(false);
+					txtUsuario.setEnabled(false);
+					txtSenha.setEnabled(false);
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage());
+				}
+			}
+		});
+		btnSalvar.setBounds(99, 0, 89, 23);
+		contentPane.add(btnSalvar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnNovo.setEnabled(true);
+				btnSalvar.setEnabled(false);
+				btnCancelar.setEnabled(false);
+				
+				txtCodigo.setText(null);
+				txtUsuario.setText(null);
+				txtSenha.setText(null);
+				
+				txtCodigo.setEnabled(false);
+				txtUsuario.setEnabled(false);
+				txtSenha.setEnabled(false);
+			}
+		});
+		btnCancelar.setEnabled(false);
+		btnCancelar.setBounds(198, 0, 89, 23);
+		contentPane.add(btnCancelar);
+		
+		modelo.addColumn("Código");
+		modelo.addColumn("Usuário");
+		
+		tabela = new JTable(modelo);
+		
+		JScrollPane scrollPane = new JScrollPane(tabela);
+		scrollPane.setBounds(0, 120, 444, 313);
+		contentPane.add(scrollPane);
+		
 	}
-
 }
