@@ -30,7 +30,7 @@ public class TelaUsuario extends JFrame {
 	 */
 	public TelaUsuario() {
 		setResizable(false);
-		setTitle("Cadastro de Usu\u00E1rio");
+		setTitle("Cadastro de Usuário");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 461);
 		contentPane = new JPanel();
@@ -145,6 +145,9 @@ public class TelaUsuario extends JFrame {
 		modelo.addColumn("Usuário");
 		
 		tabela = new JTable(modelo);
+		
+		// Evita editar a grid com 2 cliques
+		tabela.setDefaultEditor(Object.class, null);
 		
 		JScrollPane scrollPane = new JScrollPane(tabela);
 		scrollPane.setBounds(0, 120, 444, 313);

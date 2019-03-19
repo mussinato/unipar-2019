@@ -1,19 +1,23 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
-import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class TelaTipoJogo extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-
+	private JTextField textField_1;
+	private JComboBox<Integer> comboQuantidade;
 	
 
 	/**
@@ -27,7 +31,7 @@ public class TelaTipoJogo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o");
+		JLabel lblDescrio = new JLabel("Descrição");
 		lblDescrio.setBounds(24, 52, 46, 14);
 		contentPane.add(lblDescrio);
 		
@@ -40,14 +44,20 @@ public class TelaTipoJogo extends JFrame {
 		lblQuantidade.setBounds(24, 88, 73, 14);
 		contentPane.add(lblQuantidade);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(89, 84, 46, 22);
-		contentPane.add(comboBox);
+		Integer[] numeros = {1,2,3,4,5,6,7,8,9,10};
+		DefaultComboBoxModel<Integer> modelCombobox = new DefaultComboBoxModel<>(numeros);
+		comboQuantidade = new JComboBox<Integer>(modelCombobox);
 		
-		JLabel lblNewLabel = new JLabel("Tipo de Jogo");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(24, 11, 111, 30);
-		contentPane.add(lblNewLabel);
+		comboQuantidade.setBounds(89, 84, 57, 22);
+		contentPane.add(comboQuantidade);
+		
+		JLabel lblCdigo = new JLabel("Código");
+		lblCdigo.setBounds(24, 21, 46, 14);
+		contentPane.add(lblCdigo);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(88, 18, 86, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
 	}
-
 }

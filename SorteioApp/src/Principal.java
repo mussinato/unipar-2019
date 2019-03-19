@@ -38,8 +38,8 @@ public class Principal extends JFrame {
 		JMenuItem mntmTipoJogo = new JMenuItem("Tipo Jogo");
 		mntmTipoJogo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaLancamentoJogo lancamentoJogo = new TelaLancamentoJogo();
-				lancamentoJogo.setVisible(true);
+				TelaTipoJogo telaTipoJogo = new TelaTipoJogo();
+				telaTipoJogo.setVisible(true);
 			}
 		});
 		mnCadastro.add(mntmTipoJogo);
@@ -47,11 +47,11 @@ public class Principal extends JFrame {
 		JMenu mnCadastroJogo = new JMenu("Jogo");
 		menuBar.add(mnCadastroJogo);
 		
-		JMenuItem mntmMegasena = new JMenuItem("Megasena");
+		JMenuItem mntmMegasena = new JMenuItem("Lançamento do Jogo");
 		mntmMegasena.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaTipoJogo tipoJogo = new TelaTipoJogo();
-				tipoJogo.setVisible(true);
+				TelaLancamentoJogo jogo = new TelaLancamentoJogo();
+				jogo.setVisible(true);
 			}
 		});
 		mnCadastroJogo.add(mntmMegasena);
