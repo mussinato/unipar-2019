@@ -7,5 +7,5 @@
 - [x] 11/03 - Java Swing - criação de telas<br/>
 - [x] 18/03 - Trabalho Java Swing<br/>
 - [x] 25/03 - Maven - Consulta de Cep ([ConsultaCep](https://github.com/mussinato/unipar-2019/tree/master/ConsultaCep))<br/>
-- [ ] 01/04 - Introdução ao Hibernate + Revisão de conteúdo do 1 bimestre<br/>
+- [ ] 01/04 - Maven + Revisão de conteúdo do 1 bimestre<br/>
 - [ ] 08/04 - Provas do 1 bimestre<br/>
