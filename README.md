@@ -12,9 +12,9 @@
 
 ## Programação do 2 bimestre
 - [x] 22/04 - Correção da prova do 1 bimestre + Introdução ao Hibernate<br/>
-- [ ] 29/04 - Configurações do Hibernate<br/>
-- [ ] 06/05 - Hibernate<br/>
-- [ ] 20/05 - Hibernate<br/>
-- [ ] 27/05 - Hibernate<br/>
-- [ ] 03/06 - Revisão<br/>
+- [x] 29/04 - Annotations<br/>
+- [ ] 06/05 - Incluir, alterar e excluir usando Hibernate<br/>
+- [ ] 20/05 - Criteria (consulta)<br/>
+- [ ] 27/05 - HQL (consulta)<br/>
+- [ ] 03/06 - Conectar, incluir e alterar sem Hibernate + Revisão<br/>
 - [ ] 10/06 - Provas do 2 bimestre<br/>
