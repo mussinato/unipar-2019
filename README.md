@@ -13,7 +13,7 @@
 ## Programação do 2 bimestre
 - [x] 22/04 - Correção da prova do 1 bimestre + Introdução ao Hibernate<br/>
 - [x] 29/04 - Annotations<br/>
-- [ ] 06/05 - Incluir, alterar e excluir usando Hibernate<br/>
+- [ ] 06/05 - Association Mapping Annotations + Incluir, alterar e excluir usando Hibernate<br/>
 - [ ] 20/05 - Criteria (consulta)<br/>
 - [ ] 27/05 - HQL (consulta)<br/>
 - [ ] 03/06 - Conectar, incluir e alterar sem Hibernate + Revisão<br/>
