@@ -1,24 +1,23 @@
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
 
+import dao.CidadeDAO;
 import dominio.Cidade;
 
 public class Principal {
-
+	
 	public static void main(String[] args) {
-		EntityManager em = Persistence.createEntityManagerFactory("AulaPU")
-			.createEntityManager();
-		
-		em.getTransaction().begin();
-		
 		Cidade cid = new Cidade();
 		cid.setNomeCidade("CIANORTE");
 		cid.setUf("PR");
 		
-		em.merge(cid); // <- salvar
-		
-		em.getTransaction().commit();
-		
+		CidadeDAO dao = new CidadeDAO();
+		try {
+			dao.salvar(cid);
+			JOptionPane.showMessageDialog(null, "Cidade cadastrada com sucesso.");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 }
