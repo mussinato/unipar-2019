@@ -79,13 +79,12 @@ public class TelaLogin extends JFrame {
 		txtUsuario.setBounds(45, 48, 161, 23);
 		contentPane.add(txtUsuario);
 		
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		lblNewLabel.setBounds(45, 23, 60, 14);
-		contentPane.add(lblNewLabel);
-		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(45, 95, 46, 14);
+		lblSenha.setBounds(45, 103, 46, 14);
 		contentPane.add(lblSenha);
+		
+		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
+		lblUsurio.setBounds(45, 31, 46, 14);
+		contentPane.add(lblUsurio);
 	}
 }

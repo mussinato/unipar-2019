@@ -40,21 +40,21 @@ public class TelaUsuario extends JFrame {
 		
 		txtCodigo = new JTextField();
 		txtCodigo.setEnabled(false);
-		txtCodigo.setBounds(66, 31, 64, 20);
+		txtCodigo.setBounds(84, 31, 64, 20);
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
 		JLabel lblCodigo = new JLabel("Codigo *");
-		lblCodigo.setBounds(10, 34, 46, 14);
+		lblCodigo.setBounds(10, 34, 56, 14);
 		contentPane.add(lblCodigo);
 		
 		JLabel lblNewLabel = new JLabel("Usuario *");
-		lblNewLabel.setBounds(10, 59, 46, 14);
+		lblNewLabel.setBounds(10, 59, 56, 14);
 		contentPane.add(lblNewLabel);
 		
 		txtUsuario = new JTextField();
 		txtUsuario.setEnabled(false);
-		txtUsuario.setBounds(66, 56, 153, 20);
+		txtUsuario.setBounds(84, 56, 153, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
@@ -64,7 +64,7 @@ public class TelaUsuario extends JFrame {
 		
 		txtSenha = new JPasswordField();
 		txtSenha.setEnabled(false);
-		txtSenha.setBounds(66, 81, 153, 20);
+		txtSenha.setBounds(84, 81, 153, 20);
 		contentPane.add(txtSenha);
 		
 		btnNovo = new JButton("Novo");

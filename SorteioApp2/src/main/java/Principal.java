@@ -54,20 +54,21 @@ public class Principal extends JFrame {
 				jogo.setVisible(true);
 			}
 		});
-		mnCadastroJogo.add(mntmMegasena);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
-		JButton btnSorteio = new JButton("Sorteio");
-		btnSorteio.addActionListener(new ActionListener() {
+		
+		mnCadastroJogo.add(mntmMegasena);
+		
+		JMenuItem mntmSortear = new JMenuItem("Sortear");
+		mntmSortear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaSorteio sorteio = new TelaSorteio();
 				sorteio.setVisible(true);
 			}
 		});
-		btnSorteio.setBounds(308, 189, 89, 23);
-		contentPane.add(btnSorteio);
+		mnCadastroJogo.add(mntmSortear);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 	}
 }

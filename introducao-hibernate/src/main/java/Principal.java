@@ -23,6 +23,15 @@ public class Principal {
 			e.printStackTrace();
 		}
 		
+		try {
+			dao.excluir(cid);
+			JOptionPane.showMessageDialog(null, "Cidade excluida com sucesso.");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+			e.printStackTrace();
+		}
+		
+		
 		Veiculo vei = new Veiculo();
 		vei.setAnoFabricacao(2019);
 		vei.setAnoModelo(2019);
