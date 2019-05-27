@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,8 +12,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
+import dao.UsuarioDao;
+import dominio.Usuario;
 
 public class TelaUsuario extends JFrame {
 
@@ -44,7 +48,7 @@ public class TelaUsuario extends JFrame {
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
-		JLabel lblCodigo = new JLabel("Codigo *");
+		JLabel lblCodigo = new JLabel("Codigo");
 		lblCodigo.setBounds(10, 34, 56, 14);
 		contentPane.add(lblCodigo);
 		
@@ -58,7 +62,7 @@ public class TelaUsuario extends JFrame {
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
-		JLabel lblSenha = new JLabel("Senha");
+		JLabel lblSenha = new JLabel("Senha *");
 		lblSenha.setBounds(10, 84, 46, 14);
 		contentPane.add(lblSenha);
 		
@@ -91,14 +95,21 @@ public class TelaUsuario extends JFrame {
 					String usuario = txtUsuario.getText();
 					String senha = new String(txtSenha.getPassword());
 					
-					if (codigo == null || codigo.equals("")) {
-						throw new Exception("O código é obrigatório.");
-					}
 					if (usuario == null || usuario.equals("")) {
 						throw new Exception("O usuário é obrigatório.");
 					}
+					if (senha == null) {
+						throw new Exception("A senha é obrigatória.");
+					}
 					
-					modelo.addRow(new Object[] {codigo,usuario});
+					Usuario user = new Usuario();
+					user.setUsuario(usuario);
+					user.setSenha(senha);
+					
+					UsuarioDao dao = new UsuarioDao();
+					user = dao.salvar(user);
+					
+					modelo.addRow(new Object[] {user.getCodigo(),user.getUsuario()});
 					
 					JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso.");
 					

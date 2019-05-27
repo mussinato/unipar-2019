@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import dao.Conexao;
+
 public class TelaLogin extends JFrame {
 
 	private JPanel contentPane;
@@ -28,6 +30,8 @@ public class TelaLogin extends JFrame {
 				try {
 					TelaLogin frame = new TelaLogin();
 					frame.setVisible(true);
+					
+					Conexao.getConexao();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
