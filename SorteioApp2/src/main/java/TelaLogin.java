@@ -1,10 +1,8 @@
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import dao.Conexao;
+import dao.UsuarioDao;
+import dominio.Usuario;
 
 public class TelaLogin extends JFrame {
 
@@ -57,7 +57,14 @@ public class TelaLogin extends JFrame {
 				String usuario = txtUsuario.getText().toUpperCase(); 
 				String senha = new String(txtSenha.getPassword()).toUpperCase();
 				
-				if (usuario.equals("ADMIN") && senha.equals("123")) {
+				// pesquisar o usuario no banco por usuario e senha
+				UsuarioDao dao = new UsuarioDao();
+				Usuario usuarioConsulta = dao.login(usuario, senha);
+				
+				// se encontrar = abre a tela principal
+				// se NÃO encontrar = abre uma mensagem e não faz login
+				
+				if (usuarioConsulta != null) {
 					dispose();
 					
 					Principal principal = new Principal();

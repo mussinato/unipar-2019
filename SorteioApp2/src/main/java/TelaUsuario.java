@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +28,17 @@ public class TelaUsuario extends JFrame {
 	private JButton btnSalvar;
 	private JButton btnCancelar;
 	private JButton btnNovo;
+	
+	private void atualizarLista() {
+		UsuarioDao dao = new UsuarioDao();
+		List<Usuario> usuarios = dao.buscarTodos();
+		
+		modelo.setNumRows(0); // limpa a tabela
+		
+		for (Usuario u : usuarios) {
+			modelo.addRow(new Object[] {u.getCodigo(),u.getUsuario()});
+		}
+	}
 	
 
 	/**
@@ -107,6 +119,13 @@ public class TelaUsuario extends JFrame {
 					user.setSenha(senha);
 					
 					UsuarioDao dao = new UsuarioDao();
+					
+					Usuario verificaUK = dao.buscarPorUsuario(usuario);
+					if (verificaUK != null) {
+						throw new Exception("Já existe um usuário cadastrado "
+								+ "com o mesmo nome.");
+					}
+					
 					user = dao.salvar(user);
 					
 					modelo.addRow(new Object[] {user.getCodigo(),user.getUsuario()});
@@ -163,6 +182,8 @@ public class TelaUsuario extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(tabela);
 		scrollPane.setBounds(0, 120, 444, 313);
 		contentPane.add(scrollPane);
+		
+		atualizarLista();
 		
 	}
 }
