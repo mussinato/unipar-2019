@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -36,10 +37,13 @@ public class UsuarioDao {
 		EntityManager em = Conexao.getConexao();
 		Session session = em.unwrap(Session.class);
 		
+		// HQL = Hibernate Query Language
 		// select * from usuario where usuario = 'teste'
-		return (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("usuario", nomeUsuario))
-				.uniqueResult();
+		Query q = session
+				.createQuery("from Usuario u "
+						+ "where u.usuario = :user");
+		q.setParameter("user", nomeUsuario);
+		return (Usuario) q.uniqueResult();
 	}
 	
 	public Usuario login(String usuario, String senha) {
@@ -51,16 +55,5 @@ public class UsuarioDao {
 				.add(Restrictions.eq("senha", senha))
 				.uniqueResult();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }

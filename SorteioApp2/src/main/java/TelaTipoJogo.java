@@ -5,9 +5,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import dao.TipoJogoDao;
+import dominio.TipoJogo;
 
 public class TelaTipoJogo extends JFrame {
 
@@ -88,15 +92,35 @@ public class TelaTipoJogo extends JFrame {
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String descricao = txtDescricao.getText();
-				Integer quantidade = (Integer)txtQuantidade.getSelectedItem();
-				
-				btnNovo.setEnabled(true);
-				btnSalvar.setEnabled(false);
-				btnCancelar.setEnabled(false);
-				
-				desabilitaCampos(true);
-				limparCampos();
+				try {
+					String descricao = txtDescricao.getText();
+					Integer quantidade = (Integer)txtQuantidade.getSelectedItem();
+					
+					if (descricao == null || descricao.equals("")) {
+						throw new Exception("A descrição é obrigatória.");
+					}
+					if (quantidade == null) {
+						throw new Exception("A quantidade é obrigatória.");
+					}
+					
+					TipoJogo tipoJogo = new TipoJogo();
+					tipoJogo.setDescricao(descricao);
+					tipoJogo.setQuantidade(quantidade);
+					
+					TipoJogoDao dao = new TipoJogoDao();
+					dao.salvar(tipoJogo);
+					
+					btnNovo.setEnabled(true);
+					btnSalvar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+					
+					desabilitaCampos(true);
+					limparCampos();
+					
+					JOptionPane.showMessageDialog(null, "Tipo de jogo salvo com sucesso.");
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage());
+				}
 			}
 		});
 		btnSalvar.setEnabled(false);
