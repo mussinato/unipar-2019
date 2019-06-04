@@ -12,8 +12,15 @@ import dominio.Usuario;
 
 public class UsuarioDao {
 	
+	private EntityManager em;
+	private Session session;
+	
+	public UsuarioDao() {
+		em = Conexao.getConexao();
+		session = em.unwrap(Session.class);
+	}
+	
 	public Usuario salvar(Usuario usuario) throws Exception {
-		EntityManager em = Conexao.getConexao();
 		try {
 			em.getTransaction().begin();
 			usuario = em.merge(usuario);
@@ -26,17 +33,11 @@ public class UsuarioDao {
 	}
 	
 	public List<Usuario> buscarTodos(){
-		EntityManager em = Conexao.getConexao();
-		Session session = em.unwrap(Session.class);
-		
 		// select * from usuario
 		return session.createCriteria(Usuario.class).list();
 	}
 	
 	public Usuario buscarPorUsuario(String nomeUsuario) {
-		EntityManager em = Conexao.getConexao();
-		Session session = em.unwrap(Session.class);
-		
 		// HQL = Hibernate Query Language
 		// select * from usuario where usuario = 'teste'
 		Query q = session
@@ -47,9 +48,6 @@ public class UsuarioDao {
 	}
 	
 	public Usuario login(String usuario, String senha) {
-		EntityManager em = Conexao.getConexao();
-		Session session = em.unwrap(Session.class);
-		
 		return (Usuario) session.createCriteria(Usuario.class)
 				.add(Restrictions.eq("usuario", usuario))
 				.add(Restrictions.eq("senha", senha))

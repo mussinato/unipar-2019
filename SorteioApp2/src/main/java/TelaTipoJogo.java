@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -7,8 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import dao.TipoJogoDao;
 import dominio.TipoJogo;
@@ -23,7 +27,19 @@ public class TelaTipoJogo extends JFrame {
 	private JButton btnNovo;
 	private JButton btnSalvar;
 	private JButton btnCancelar;
+	private JTable table;
+	private DefaultTableModel modelo = new DefaultTableModel();
 	
+	private void atualizarLista() {
+		TipoJogoDao dao = new TipoJogoDao();
+		List<TipoJogo> tipos = dao.buscarTodos();
+		
+		modelo.setNumRows(0); // limpa a tabela
+		
+		for (TipoJogo t : tipos) {
+			modelo.addRow(new Object[] {t.getCodigo(),t.getDescricao(),t.getQuantidade()});
+		}
+	}
 
 	/**
 	 * Create the frame.
@@ -31,7 +47,7 @@ public class TelaTipoJogo extends JFrame {
 	public TelaTipoJogo() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 417);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -116,6 +132,7 @@ public class TelaTipoJogo extends JFrame {
 					
 					desabilitaCampos(true);
 					limparCampos();
+					atualizarLista();
 					
 					JOptionPane.showMessageDialog(null, "Tipo de jogo salvo com sucesso.");
 				} catch (Exception ex) {
@@ -141,6 +158,23 @@ public class TelaTipoJogo extends JFrame {
 		btnCancelar.setEnabled(false);
 		btnCancelar.setBounds(198, 0, 89, 23);
 		contentPane.add(btnCancelar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 131, 444, 258);
+		contentPane.add(scrollPane);
+		
+		modelo.addColumn("Código");
+		modelo.addColumn("Descrição");
+		modelo.addColumn("Quantidade");
+		
+		table = new JTable(modelo);
+		
+		// Evita editar a grid com 2 cliques
+		table.setDefaultEditor(Object.class, null);
+				
+		scrollPane.setViewportView(table);
+		
+		atualizarLista();
 	}
 	
 	private void limparCampos() {
