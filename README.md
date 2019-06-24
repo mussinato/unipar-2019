@@ -16,6 +16,6 @@
 - [x] 06/05 - Association Mapping Annotations + Incluir, alterar e excluir usando Hibernate<br/>
 - [x] 20/05 - Criteria (consulta)<br/>
 - [x] 27/05 - Criteria (consulta)<br/>
-- [x] 03/06 - Criteria (consulta) + Revisão<br/>
+- [x] 03/06 - HQL (consulta) + Revisão<br/>
 - [x] 18/06 - Prova do 2 bimestre<br/>
 - [ ] 01/07 - Prova substutiva do 1 semestre<br/>
