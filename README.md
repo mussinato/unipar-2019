@@ -18,4 +18,4 @@
 - [x] 27/05 - Criteria (consulta)<br/>
 - [x] 03/06 - HQL (consulta) + Revisão<br/>
 - [x] 18/06 - Prova do 2 bimestre<br/>
-- [ ] 01/07 - Prova substutiva do 1 semestre<br/>
+- [x] 01/07 - Prova substutiva do 1 semestre<br/>
