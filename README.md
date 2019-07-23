@@ -19,3 +19,26 @@
 - [x] 03/06 - HQL (consulta) + Revisão<br/>
 - [x] 18/06 - Prova do 2 bimestre<br/>
 - [x] 01/07 - Prova substutiva do 1 semestre<br/>
+
+## Programação do 3 bimestre
+- [x] 22/07 - Introdução a padrões de projeto + singleton<br/>
+- [x] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
+- [x] 12/08 - Padrões de projeto - MVC<br/>
+- [x] 05/08 - Introdução ao JSF<br/>
+- [x] 19/08 - Classe Controladora<br/>
+- [x] 26/08 - Ciclo de vida + Componentes<br/>
+- [x] 02/09 - Componentes<br/>
+- [x] 09/09 - Revisão<br/>
+- [x] 16/09 - Prova do 3 bimestre<br/>
+
+## Programação do 4 bimestre
+- [x] 30/09 - <br/>
+- [x] 07/10 - <br/>
+- [x] 21/10 - <br/>
+- [x] 28/10 - <br/>
+- [x] 04/11 - <br/>
+- [x] 11/11 - Revisão do bimestre<br/>
+- [x] 18/11 - Prova do 4 bimestre<br/>
+- [x] 02/12 - Correção da prova e definição dos conteúdos para a sub<br/>
+- [x] 09/12 - Prova subistitutiva do 2 semestre<br/>
+
