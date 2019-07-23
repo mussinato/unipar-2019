@@ -22,23 +22,23 @@
 
 ## Programação do 3 bimestre
 - [x] 22/07 - Introdução a padrões de projeto + singleton<br/>
-- [x] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
-- [x] 12/08 - Padrões de projeto - MVC<br/>
-- [x] 05/08 - Introdução ao JSF<br/>
-- [x] 19/08 - Classe Controladora<br/>
-- [x] 26/08 - Ciclo de vida + Componentes<br/>
-- [x] 02/09 - Componentes<br/>
-- [x] 09/09 - Revisão<br/>
-- [x] 16/09 - Prova do 3 bimestre<br/>
+- [ ] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
+- [ ] 12/08 - Padrões de projeto - MVC<br/>
+- [ ] 05/08 - Introdução ao JSF<br/>
+- [ ] 19/08 - Classe Controladora<br/>
+- [ ] 26/08 - Ciclo de vida + Componentes<br/>
+- [ ] 02/09 - Componentes<br/>
+- [ ] 09/09 - Revisão<br/>
+- [ ] 16/09 - Prova do 3 bimestre<br/>
 
 ## Programação do 4 bimestre
-- [x] 30/09 - <br/>
-- [x] 07/10 - <br/>
-- [x] 21/10 - <br/>
-- [x] 28/10 - <br/>
-- [x] 04/11 - <br/>
-- [x] 11/11 - Revisão do bimestre<br/>
-- [x] 18/11 - Prova do 4 bimestre<br/>
-- [x] 02/12 - Correção da prova e definição dos conteúdos para a sub<br/>
-- [x] 09/12 - Prova subistitutiva do 2 semestre<br/>
+- [ ] 30/09 - <br/>
+- [ ] 07/10 - <br/>
+- [ ] 21/10 - <br/>
+- [ ] 28/10 - <br/>
+- [ ] 04/11 - <br/>
+- [ ] 11/11 - Revisão do bimestre<br/>
+- [ ] 18/11 - Prova do 4 bimestre<br/>
+- [ ] 02/12 - Correção da prova e definição dos conteúdos para a sub<br/>
+- [ ] 09/12 - Prova subistitutiva do 2 semestre<br/>
 
