@@ -17,6 +17,11 @@ public class TipoJogo {
 	
 	private Integer quantidade;
 
+	@Override
+	public String toString() {
+		return this.descricao;
+	}
+	
 	public Integer getCodigo() {
 		return codigo;
 	}

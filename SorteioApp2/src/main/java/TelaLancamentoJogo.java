@@ -1,23 +1,36 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+
+import dao.LancamentoJogoDao;
+import dao.TipoJogoDao;
+import dominio.LancamentoJogo;
+import dominio.TipoJogo;
 
 public class TelaLancamentoJogo extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCodigo;
 	private JTextField txtNumeros;
-	private JComboBox txtTipoJogo;
+	private JComboBox<TipoJogo> txtTipoJogo;
 	private JButton btnNovo;
 	private JButton btnSalvar;
 	private JButton btnCancelar;
-	private JTextField textField;
+	private JTextField txtCpf;
+	private JTable table;
+	private DefaultTableModel modelo = new DefaultTableModel();
 	
 
 	/**
@@ -26,7 +39,7 @@ public class TelaLancamentoJogo extends JFrame {
 	public TelaLancamentoJogo() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 416);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,10 +63,15 @@ public class TelaLancamentoJogo extends JFrame {
 		contentPane.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		
-		txtTipoJogo = new JComboBox();
+		txtTipoJogo = new JComboBox<TipoJogo>();
 		txtTipoJogo.setEnabled(false);
 		txtTipoJogo.setBounds(92, 55, 140, 22);
 		contentPane.add(txtTipoJogo);
+		
+		List<TipoJogo> tipos = new TipoJogoDao().buscarTodos();
+		for (TipoJogo t : tipos) {
+			txtTipoJogo.addItem(t);
+		};
 		
 		txtNumeros = new JTextField();
 		txtNumeros.setEnabled(false);
@@ -77,12 +95,43 @@ public class TelaLancamentoJogo extends JFrame {
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				desabilitaCampos(true);
-				limparCampos();
-				btnNovo.setEnabled(true);
-				btnSalvar.setEnabled(false);
-				btnCancelar.setEnabled(false);
+				try {
+					Integer codigo = txtCodigo.getText() != null && !txtCodigo.getText().equals("") ? Integer.valueOf(txtCodigo.getText()) : null;
+					String numeros = txtNumeros.getText();
+					String cpf = txtCpf.getText();
+					TipoJogo tipoJogo = (TipoJogo) txtTipoJogo.getSelectedItem();
+					
+					if (numeros == null || numeros.equals("")) {
+						throw new Exception("Os números são obrigatórios.");
+					}
+					if (cpf == null || cpf.equals("")) {
+						throw new Exception("O cpf é obrigatório.");
+					}
+					if (tipoJogo == null) {
+						throw new Exception("O tipo de jogo é obrigatório.");
+					}
+					
+					LancamentoJogo lancamento = new LancamentoJogo();
+					lancamento.setCodigo(codigo);
+					lancamento.setCpf(cpf);
+					lancamento.setNumeros(numeros);
+					lancamento.setTipoJogo(tipoJogo);
+					
+					LancamentoJogoDao dao = new LancamentoJogoDao();
+					dao.salvar(lancamento);
+					
+					btnNovo.setEnabled(true);
+					btnSalvar.setEnabled(false);
+					btnCancelar.setEnabled(false);
+					
+					desabilitaCampos(true);
+					limparCampos();
+					atualizarLista();
+					
+					JOptionPane.showMessageDialog(null, "Lançamento de jogo salvo com sucesso.");
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage());
+				}
 			}
 		});
 		btnSalvar.setEnabled(false);
@@ -107,21 +156,52 @@ public class TelaLancamentoJogo extends JFrame {
 		lblCpf.setBounds(10, 107, 63, 14);
 		contentPane.add(lblCpf);
 		
-		textField = new JTextField();
-		textField.setEnabled(false);
-		textField.setColumns(10);
-		textField.setBounds(92, 104, 140, 20);
-		contentPane.add(textField);
+		txtCpf = new JTextField();
+		txtCpf.setEnabled(false);
+		txtCpf.setColumns(10);
+		txtCpf.setBounds(92, 104, 140, 20);
+		contentPane.add(txtCpf);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(0, 130, 444, 258);
+		contentPane.add(scrollPane);
+		
+		modelo.addColumn("Código");
+		modelo.addColumn("CPF");
+		modelo.addColumn("Tipo de Jogo");
+		modelo.addColumn("Números");
+		
+		table = new JTable(modelo);
+		
+		// Evita editar a grid com 2 cliques
+		table.setDefaultEditor(Object.class, null);
+				
+		scrollPane.setViewportView(table);
+		
+		atualizarLista();
 	}
 	
 	private void limparCampos() {
 		txtCodigo.setText(null);
 		txtNumeros.setText(null);
 		txtTipoJogo.setSelectedItem(null);
+		txtCpf.setText(null);
 	}
 	
 	private void desabilitaCampos(boolean value) {
 		txtNumeros.setEnabled(!value);
 		txtTipoJogo.setEnabled(!value);
+		txtCpf.setEnabled(!value);
+	}
+	
+	private void atualizarLista() {
+		LancamentoJogoDao dao = new LancamentoJogoDao();
+		List<LancamentoJogo> lancamentos = dao.buscarTodos();
+		
+		modelo.setNumRows(0); // limpa a tabela
+		
+		for (LancamentoJogo t : lancamentos) {
+			modelo.addRow(new Object[] {t.getCodigo(),t.getCpf(),t.getTipoJogo().getDescricao(),t.getNumeros()});
+		}
 	}
 }
