@@ -22,10 +22,8 @@
 
 ## Programação do 3 bimestre
 - [x] 22/07 - Introdução a padrões de projeto + singleton<br/>
-- [ ] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
-- [ ] 12/08 - Padrões de projeto - MVC<br/>
-- [ ] 05/08 - Introdução ao JSF<br/>
-- [ ] 19/08 - Classe Controladora<br/>
+- [x] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
+- [x] 12/08 - Padrões de projeto - MVC<br/>
 - [ ] 26/08 - Ciclo de vida + Componentes<br/>
 - [ ] 02/09 - Componentes<br/>
 - [ ] 09/09 - Revisão<br/>
