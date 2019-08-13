@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

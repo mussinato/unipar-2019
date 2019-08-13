@@ -1,3 +1,4 @@
+package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -14,8 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import dao.UsuarioDao;
-import dominio.Usuario;
+import controller.UsuarioCtrl;
+import model.dao.UsuarioDao;
+import model.domain.Usuario;
 
 public class TelaUsuario extends JFrame {
 
@@ -102,50 +104,16 @@ public class TelaUsuario extends JFrame {
 		btnSalvar.setEnabled(false);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					String codigo = txtCodigo.getText();
-					String usuario = txtUsuario.getText();
-					String senha = new String(txtSenha.getPassword());
+				String codigo = txtCodigo.getText();
+				String usuario = txtUsuario.getText();
+				String senha = new String(txtSenha.getPassword());
 					
-					if (usuario == null || usuario.equals("")) {
-						throw new Exception("O usuário é obrigatório.");
-					}
-					if (senha == null) {
-						throw new Exception("A senha é obrigatória.");
-					}
-					
-					Usuario user = new Usuario();
-					user.setUsuario(usuario);
-					user.setSenha(senha);
-					
-					UsuarioDao dao = new UsuarioDao();
-					
-					Usuario verificaUK = dao.buscarPorUsuario(usuario);
-					if (verificaUK != null) {
-						throw new Exception("Já existe um usuário cadastrado "
-								+ "com o mesmo nome.");
-					}
-					
-					user = dao.salvar(user);
-					
-					modelo.addRow(new Object[] {user.getCodigo(),user.getUsuario()});
-					
-					JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso.");
-					
-					btnNovo.setEnabled(true);
-					btnSalvar.setEnabled(false);
-					btnCancelar.setEnabled(false);
-					
-					txtCodigo.setText(null);
-					txtUsuario.setText(null);
-					txtSenha.setText(null);
-					
-					txtCodigo.setEnabled(false);
-					txtUsuario.setEnabled(false);
-					txtSenha.setEnabled(false);
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, ex.getMessage());
-				}
+				Usuario user = new Usuario();
+				user.setUsuario(usuario);
+				user.setSenha(senha);
+				
+				UsuarioCtrl ctrl = new UsuarioCtrl(TelaUsuario.this);
+				ctrl.salvar(user);
 			}
 		});
 		btnSalvar.setBounds(99, 0, 89, 23);
@@ -186,4 +154,76 @@ public class TelaUsuario extends JFrame {
 		atualizarLista();
 		
 	}
+
+
+	public JTextField getTxtCodigo() {
+		return txtCodigo;
+	}
+
+
+	public void setTxtCodigo(JTextField txtCodigo) {
+		this.txtCodigo = txtCodigo;
+	}
+
+
+	public JTextField getTxtUsuario() {
+		return txtUsuario;
+	}
+
+
+	public void setTxtUsuario(JTextField txtUsuario) {
+		this.txtUsuario = txtUsuario;
+	}
+
+
+	public JPasswordField getTxtSenha() {
+		return txtSenha;
+	}
+
+
+	public void setTxtSenha(JPasswordField txtSenha) {
+		this.txtSenha = txtSenha;
+	}
+
+
+	public DefaultTableModel getModelo() {
+		return modelo;
+	}
+
+
+	public void setModelo(DefaultTableModel modelo) {
+		this.modelo = modelo;
+	}
+
+
+	public JButton getBtnSalvar() {
+		return btnSalvar;
+	}
+
+
+	public void setBtnSalvar(JButton btnSalvar) {
+		this.btnSalvar = btnSalvar;
+	}
+
+
+	public JButton getBtnCancelar() {
+		return btnCancelar;
+	}
+
+
+	public void setBtnCancelar(JButton btnCancelar) {
+		this.btnCancelar = btnCancelar;
+	}
+
+
+	public JButton getBtnNovo() {
+		return btnNovo;
+	}
+
+
+	public void setBtnNovo(JButton btnNovo) {
+		this.btnNovo = btnNovo;
+	}
+	
+	
 }

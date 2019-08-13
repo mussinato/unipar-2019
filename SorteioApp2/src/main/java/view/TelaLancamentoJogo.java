@@ -1,3 +1,4 @@
+package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -14,10 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import dao.LancamentoJogoDao;
-import dao.TipoJogoDao;
-import dominio.LancamentoJogo;
-import dominio.TipoJogo;
+import model.dao.LancamentoJogoDao;
+import model.dao.TipoJogoDao;
+import model.domain.LancamentoJogo;
+import model.domain.TipoJogo;
 
 public class TelaLancamentoJogo extends JFrame {
 

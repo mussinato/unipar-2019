@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import java.util.List;
 
@@ -6,30 +6,30 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 
-import dominio.LancamentoJogo;
+import model.domain.TipoJogo;
 
-public class LancamentoJogoDao {
+public class TipoJogoDao {
 	private EntityManager em;
 	private Session session;
 	
-	public LancamentoJogoDao() {
+	public TipoJogoDao() {
 		em = Conexao.getConexao();
 		session = em.unwrap(Session.class);
 	}
 	
-	public LancamentoJogo salvar(LancamentoJogo lancamentoJogo) throws Exception {
+	public TipoJogo salvar(TipoJogo tipoJogo) throws Exception {
 		try {
 			em.getTransaction().begin();
-			lancamentoJogo = em.merge(lancamentoJogo);
+			tipoJogo = em.merge(tipoJogo);
 			em.getTransaction().commit();
-			return lancamentoJogo;
+			return tipoJogo;
 		}catch(Exception e) {
 			em.getTransaction().rollback();
 			throw e;
 		}		
 	}
 	
-	public List<LancamentoJogo> buscarTodos(){
-		return session.createCriteria(LancamentoJogo.class).list();
+	public List<TipoJogo> buscarTodos(){
+		return session.createCriteria(TipoJogo.class).list();
 	}
 }

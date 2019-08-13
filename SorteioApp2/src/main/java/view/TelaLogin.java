@@ -1,3 +1,4 @@
+package view;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +12,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import dao.Conexao;
-import dao.UsuarioDao;
-import dominio.Usuario;
+import controller.LoginCtrl;
+import model.dao.Conexao;
+import model.dao.UsuarioDao;
+import model.domain.Usuario;
 
 public class TelaLogin extends JFrame {
 
@@ -53,30 +55,11 @@ public class TelaLogin extends JFrame {
 		JButton btnLogin = new JButton("Entrar");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				String usuario = txtUsuario.getText().toUpperCase(); 
 				String senha = new String(txtSenha.getPassword()).toUpperCase();
 				
-				// pesquisar o usuario no banco por usuario e senha
-				UsuarioDao dao = new UsuarioDao();
-				Usuario usuarioConsulta = dao.login(usuario, senha);
-				
-				// se encontrar = abre a tela principal
-				// se NÃO encontrar = abre uma mensagem e não faz login
-				
-				if (usuarioConsulta != null) {
-					dispose();
-					
-					Principal principal = new Principal();
-					principal.setExtendedState(JFrame.MAXIMIZED_BOTH); // tela abre maximizada
-					principal.setVisible(true);
-				} else {
-					JOptionPane.showMessageDialog(null, 
-							"Usuário e/ou senha inválido(s).",
-							"Atenção!",
-							JOptionPane.WARNING_MESSAGE);
-				}
-				
+				LoginCtrl ctrl = new LoginCtrl(TelaLogin.this);
+				ctrl.login(usuario, senha);
 			}
 		});
 		btnLogin.setBounds(45, 168, 161, 23);

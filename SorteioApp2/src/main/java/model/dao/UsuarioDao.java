@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-import dominio.Usuario;
+import model.domain.Usuario;
 
 public class UsuarioDao {
 	
