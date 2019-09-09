@@ -24,9 +24,9 @@
 - [x] 22/07 - Introdução a padrões de projeto + singleton<br/>
 - [x] 05/08 - Apresentação dos trabalhos de padrões de projeto<br/>
 - [x] 12/08 - Padrões de projeto - MVC<br/>
-- [x] 26/08 - Ciclo de vida + Componentes JSP<br/>
-- [ ] 02/09 - Componentes JSP<br/>
-- [ ] 09/09 - Revisão 3 bimestre<br/>
+- [x] 26/08 - Ciclo de vida + componentes<br/>
+- [x] 02/09 - Servlets<br/>
+- [x] 09/09 - Filter + Revisão 3 bimestre<br/>
 - [ ] 16/09 - Prova do 3 bimestre<br/>
 
 ## Programação do 4 bimestre
