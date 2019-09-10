@@ -20,6 +20,7 @@
 			out.println("Cidade: "+endereco.getLocalidade()+"<br/>");
 			out.println("UF: "+endereco.getUf());
 			
+			// guardar um objeto na sessao
 			session.setAttribute("ultimo_cep",cep);
 		} else {
 			out.println("Cep não encontrado!");
