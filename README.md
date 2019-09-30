@@ -30,7 +30,7 @@
 - [ ] 16/09 - Prova do 3 bimestre<br/>
 
 ## Programação do 4 bimestre
-- [ ] 30/09 - <br/>
+- [x] 30/09 - Correção da prova do 3 bimestre<br/>
 - [ ] 07/10 - <br/>
 - [ ] 21/10 - <br/>
 - [ ] 28/10 - <br/>
