@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>UNIPAR</title>
+</h:head>
+<h:body>
+	<h1>Login</h1>
+	
+	<h:form>
+		<p:messages />
+	
+		<p:outputLabel for="usuario" value="Usuário:" />
+		<p:inputText id="usuario" required="true" 
+			requiredMessage="Informe o usuário" />
+		
+		<br/>
+		
+		<p:outputLabel for="senha" value="Senha:" />
+		<p:password id="senha" required="true"
+			requiredMessage="Informe a senha" />
+		
+		<br/>
+		
+		<p:commandButton value="Voltar" action="index" process="@this" />
+		<p:commandButton value="Entrar" update="@form" />
+	</h:form>
+</h:body>
+</html>
