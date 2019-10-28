@@ -31,10 +31,10 @@
 
 ## Programação do 4 bimestre
 - [x] 30/09 - Correção da prova do 3 bimestre<br/>
-- [ ] 07/10 - <br/>
-- [ ] 21/10 - <br/>
-- [ ] 28/10 - <br/>
-- [ ] 04/11 - <br/>
+- [x] 07/10 - Introdução ao JSF<br/>
+- [x] 21/10 - PrimeFaces<br/>
+- [x] 28/10 - Escopos do JSF<br/>
+- [ ] 04/11 - Escopos e Filtros do JSF<br/>
 - [ ] 11/11 - Revisão do bimestre<br/>
 - [ ] 18/11 - Prova do 4 bimestre<br/>
 - [ ] 02/12 - Correção da prova e definição dos conteúdos para a sub<br/>
