@@ -17,8 +17,11 @@
 	
 		<p:outputLabel for="txt" value="Campo Texto:" />
 		<p:inputText id="txt" required="true" 
-			requiredMessage="Campo texto obrigatório" />
+			requiredMessage="Campo texto obrigatório"
+			value="#{testeCtrl.campo1}" />
 		
+		<br/>
+		<p:outputLabel value="#{testeCtrl.campo1}" />
 		<br/>
 		
 		<p:outputLabel for="popup" value="Calendário:" />
@@ -57,8 +60,13 @@
 	    		message="Deseja realizar alguma ação?" />
 	    </p:commandButton>
 	    
-	    <p:commandButton value="Mudar de página" action="pagina2"
+	    <p:commandButton value="Mudar de página" 
+	    	action="pagina2"
 	    	update="@form" />
+	    	
+	    <p:commandButton value="Executar Controlador"
+	    	update="@form"
+	    	actionListener="#{testeCtrl.teste}" />
 	    	
 	    <p:commandButton value="Login" action="login" process="@this" />
 	    
@@ -66,6 +74,36 @@
 	    	<p:commandButton value="Sim" styleClass="ui-confirmdialog-yes" />
 	    	<p:commandButton value="Não" styleClass="ui-confirmdialog-no" />
 	    </p:confirmDialog>
+	    <br/>
+	    <p:dataTable var="car" value="#{testeCtrl.lista}"
+	    	rows="3"
+	    	paginator="true" rowsPerPageTemplate="3,5,10">
+	    	
+	    	<p:column headerText="Marca" filterBy="#{car.marca}"
+	    		sortBy="#{car.marca}">
+	    		#{car.marca}
+	    	</p:column>
+	    	
+	    	<p:column headerText="Modelo" filterBy="#{car.modelo}"
+	    		sortBy="#{car.modelo}">
+	    		#{car.modelo}
+	    	</p:column>
+	    	
+	    	<p:column headerText="Ano" filterBy="#{car.ano}"
+	    		sortBy="#{car.ano}">
+	    		#{car.ano}
+	    	</p:column>
+	    	
+	    	<p:column headerText="Cor" filterBy="#{car.cor}"
+	    		sortBy="#{car.cor}">
+	    		#{car.cor}
+	    	</p:column>
+	    </p:dataTable>
+	    
+	    
+	    
+	    
+	    
 	    
     </h:form>        
 </h:body>
