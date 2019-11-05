@@ -10,8 +10,41 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class TesteController {
 	
+	private Integer numero = 0;
+	
 	private String campo1;
 	private List<Carro> lista = new ArrayList<>();
+	private List<Pessoa> pessoas = new ArrayList<>();
+	
+	private Integer codigo;
+	private String nome;
+	private String email;
+	
+	public void salvar() {
+		Pessoa pes = new Pessoa();
+		pes.setCodigo(codigo);
+		pes.setNome(nome);
+		pes.setEmail(email);
+		
+		pessoas.add(pes);
+		
+		codigo = null;
+		nome = null;
+		email = null;
+	}
+	
+	
+	public void imprimir() {
+		System.out.println("Numero: "+numero);
+	}
+	
+	public void somar() {
+		numero += 1;
+	}
+	
+	public void diminuir() {
+		numero -= 1;
+	}
 
 	public void teste() {
 		System.out.println("CAMPO TEXTO: "+campo1);
@@ -37,6 +70,54 @@ public class TesteController {
 
 	public void setLista(List<Carro> lista) {
 		this.lista = lista;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
+	}
+
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

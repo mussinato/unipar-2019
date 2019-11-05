@@ -12,7 +12,29 @@
 	<h1>Página 2</h1>
 	
 	<h:form>
+		<p:outputLabel value="Codigo" />
+		<p:inputText value="#{testeCtrl.codigo}" />
+		<br/>
+		
+		<p:outputLabel value="Nome" />
+		<p:inputText value="#{testeCtrl.nome}" />
+		<br/>
+		
+		<p:outputLabel value="Email" />
+		<p:inputText value="#{testeCtrl.email}" />
+		<br/>
+		
 		<p:commandButton value="Voltar" action="index" />
+		<p:commandButton value="Salvar" update="@form"
+			actionListener="#{testeCtrl.salvar}" />
+		<br/>
+		<br/>
+		
+		<p:dataTable var="pes" value="#{testeCtrl.pessoas}">
+			<p:column headerText="Codigo">#{pes.codigo}</p:column>
+			<p:column headerText="Nome">#{pes.nome}</p:column>
+			<p:column headerText="Email">#{pes.email}</p:column>
+		</p:dataTable>
 	</h:form>
 </h:body>
 </html>

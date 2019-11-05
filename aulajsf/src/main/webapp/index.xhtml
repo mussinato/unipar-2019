@@ -65,7 +65,7 @@
 	    	update="@form" />
 	    	
 	    <p:commandButton value="Executar Controlador"
-	    	update="@form"
+	    	update="@form" action="#{testeCtrl.teste}"
 	    	actionListener="#{testeCtrl.teste}" />
 	    	
 	    <p:commandButton value="Login" action="login" process="@this" />
@@ -100,11 +100,37 @@
 	    	</p:column>
 	    </p:dataTable>
 	    
-	    
-	    
-	    
-	    
-	    
+	    <br/><br/><br/><br/>
+	    <hr/>
+	    <br/>
+    </h:form>
+    
+    <h:form>
+    	<p:inputText value="#{testeCtrl.numero}" />
+    	
+	    <p:commandButton value="Somar" update="@form"
+	    	actionListener="#{testeCtrl.somar}" />
+	    	
+	    <p:commandButton value="Diminuir" update="@form"
+	    	actionListener="#{testeCtrl.diminuir}" /> 
+	    	
+	    <p:commandButton value="Imprimir" update="@form"
+	    	actionListener="#{testeCtrl.imprimir}" /> 	
+	    	
+	    <br/>
+	    Numero Digitado: <p:outputLabel value="#{testeCtrl.numero}" />   	
     </h:form>        
+    
+    <br/><br/><br/><br/><br/>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </h:body>
 </html>
