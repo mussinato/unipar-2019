@@ -34,9 +34,9 @@
 - [x] 07/10 - Introdução ao JSF<br/>
 - [x] 21/10 - PrimeFaces<br/>
 - [x] 28/10 - Escopos do JSF<br/>
-- [ ] 04/11 - Escopos e Filtros do JSF<br/>
-- [ ] 11/11 - Revisão do bimestre<br/>
-- [ ] 18/11 - Prova do 4 bimestre<br/>
-- [ ] 02/12 - Correção da prova e definição dos conteúdos para a sub<br/>
-- [ ] 09/12 - Prova subistitutiva do 2 semestre<br/>
+- [x] 04/11 - Escopos e Filtros do JSF<br/>
+- [x] 11/11 - Revisão do bimestre<br/>
+- [x] 18/11 - Prova do 4 bimestre<br/>
+- [ ] ~~02/12 - Correção da prova e definição dos conteúdos para a sub<br/>~~
+- [ ] ~~09/12 - Prova subistitutiva do 2 semestre<br/>~~
 
